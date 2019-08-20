@@ -1,6 +1,6 @@
 from sklearn.datasets import fetch_20newsgroups
 import pickle
-import cPickle
+import _pickle as cPickle
 import nltk
 from nltk.corpus import stopwords
 import io
@@ -26,9 +26,9 @@ data_all = DataFrame({'news':[]})
 for i in range(0, len(newsgroups_train.data)):
 	target = newsgroups_train.target[i]
 	# Convert into unicode
-	newsgroups_train.data[i] = unicode(newsgroups_train.data[i])
+	newsgroups_train.data[i] = newsgroups_train.data[i]
 	# Remove characters which can't be converted into ascii.
-	newsgroups_train.data[i] = unicodedata.normalize('NFKD', newsgroups_train.data[i]).encode('ascii','ignore')
+	# newsgroups_train.data[i] = unicodedata.normalize('NFKD', newsgroups_train.data[i]).encode('ascii','ignore')
 	for character in ["\n", "|", ">", "<", "-", "+", "^", "[", "]", "#", "\t", "\r", "`"]:
 		newsgroups_train.data[i] = newsgroups_train.data[i].replace(character, " ")
 
@@ -38,9 +38,9 @@ for i in range(0, len(newsgroups_train.data)):
 for i in range(0, len(newsgroups_test.data)):
 	target = newsgroups_test.target[i]
 	# Convert into unicode
-	newsgroups_test.data[i] = unicode(newsgroups_test.data[i])
+	newsgroups_test.data[i] = newsgroups_test.data[i]
 	# Remove characters which can't be converted into ascii.
-	newsgroups_test.data[i] = unicodedata.normalize('NFKD', newsgroups_test.data[i]).encode('ascii','ignore')
+	# newsgroups_test.data[i] = unicodedata.normalize('NFKD', newsgroups_test.data[i]).encode('ascii','ignore')
 	for character in ["\n", "|", ">", "<", "-", "+", "^", "[", "]", "#", "\t", "\r", "`"]:
 		newsgroups_test.data[i] = newsgroups_test.data[i].replace(character, " ")
 	

@@ -20,7 +20,7 @@ if __name__ == '__main__':
 	# Use the NLTK tokenizer to split the paragraph into sentences.
 	tokenizer = nltk.data.load('tokenizers/punkt/english.pickle')
 	sentences = []
-	print "Parsing sentences from training set..."	
+	print("Parsing sentences from training set...")
 
 	# Loop over each news article.
 	for review in train_word_vector["news"]:
@@ -39,7 +39,7 @@ if __name__ == '__main__':
 	context = 10          # Context window size
 	downsampling = 1e-3   # Downsample setting for frequent words
 
-	print "Training Word2Vec model..."
+	print("Training Word2Vec model...")
 	# Train Word2Vec model.
 	model = Word2Vec(sentences, workers=num_workers, hs = 0, sg = 1, negative = 10, iter = 25,\
 	            size=num_features, min_count = min_word_count, \
@@ -48,8 +48,8 @@ if __name__ == '__main__':
 	model_name = str(num_features) + "features_" + str(min_word_count) + "minwords_" + str(context) + "context_len2alldata"
 	model.init_sims(replace=True)
 	# Save Word2Vec model.
-	print "Saving Word2Vec model..."	
+	print("Saving Word2Vec model...")
 	model.save(model_name)
 	endmodeltime = time.time()
 
-	print "time : ", endmodeltime-start
+	print("time : "+ str(endmodeltime-start))
