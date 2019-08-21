@@ -44,7 +44,7 @@ $ python SCDV.py 200 60
 ```
 Get Topic coherence for documents in train set:
 ```sh
-$ python TopicCoherence.py 200 60
+$ python TopicCoherence.py 200 60 10
 # TopicCoherence.py takes word vector dimension and number of clusters as arguments. We took word vector dimension as 200 and number of clusters as 60.
 ```
 #### Reuters
